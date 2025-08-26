@@ -3,7 +3,7 @@ require_once __DIR__ . '/../models/User.php';
 
 class AuthController {
     public function registerForm() {
-        require_once __DIR__ . '/../Views/auth/register.php';
+        require_once __DIR__ . '/../views/register.php';
     }
 
     public function register() {
