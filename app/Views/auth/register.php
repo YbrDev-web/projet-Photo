@@ -1,4 +1,3 @@
-<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -6,31 +5,29 @@
     <title>Inscription</title>
 </head>
 <body>
-    <h1>Créer un compte</h1>
+    <h1>Inscription</h1>
 
-    <?php if (!empty($_SESSION['errors'])): ?>
+    <?php if (!empty($errors)): ?>
         <ul style="color: red;">
-            <?php foreach ($_SESSION['errors'] as $error): ?>
+            <?php foreach ($errors as $error): ?>
                 <li><?= htmlspecialchars($error) ?></li>
-            <?php endforeach; unset($_SESSION['errors']); ?>
+            <?php endforeach; ?>
         </ul>
     <?php endif; ?>
 
-    <form method="POST" action="/auth/registerPost">
-        <label>Email :</label>
-        <input type="email" name="email" value="<?= $_SESSION['old']['email'] ?? '' ?>" required><br>
+    <form method="POST" action="">
+        <label>Email :</label><br>
+        <input type="email" name="email" value="<?= htmlspecialchars($_POST['email'] ?? '') ?>"><br><br>
 
-        <label>Pseudo :</label>
-        <input type="text" name="username" value="<?= $_SESSION['old']['username'] ?? '' ?>" required><br>
+        <label>Pseudo :</label><br>
+        <input type="text" name="username" value="<?= htmlspecialchars($_POST['username'] ?? '') ?>"><br><br>
 
-        <label>Mot de passe :</label>
-        <input type="password" name="password" required><br>
+        <label>Mot de passe :</label><br>
+        <input type="password" name="password"><br><br>
 
-        <label>Confirmer le mot de passe :</label>
-        <input type="password" name="confirm" required><br>
-
-        <button type="submit">S’inscrire</button>
+        <button type="submit">S'inscrire</button>
     </form>
+
+    <p>Déjà un compte ? <a href="/?url=auth/login">Connexion</a></p>
 </body>
 </html>
-<?php unset($_SESSION['old']); ?>
