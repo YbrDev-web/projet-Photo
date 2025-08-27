@@ -5,10 +5,11 @@ class Database {
 
     public static function getConnection() {
         if (self::$instance === null) {
-            $host = "db";      // service docker-compose
-            $dbname = "photos";
-            $user = "user";
-            $pass = "password";
+            // On récupère d’abord les variables d’environnement (Docker)
+            $host = getenv("DB_HOST") ?: "db";
+            $dbname = getenv("DB_NAME") ?: "photos";
+            $user = getenv("DB_USER") ?: "user";
+            $pass = getenv("DB_PASS") ?: "password";
 
             try {
                 self::$instance = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $user, $pass);
