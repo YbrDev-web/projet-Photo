@@ -12,13 +12,13 @@ class Router {
                 break;
 
             case 'auth/register':
-                require_once __DIR__ . '/../controllers/AuthControllers.php';
+                require_once __DIR__ . '/../Controllers/AuthControllers.php';
                 $controller = new AuthController();
                 $controller->registerForm();
                 break;
 
             case 'auth/registerPost':
-                require_once __DIR__ . '/../controllers/AuthControllers.php';
+                require_once __DIR__ . '/../Controllers/AuthControllers.php';
                 $controller = new AuthController();
                 $controller->register();
                 break;
